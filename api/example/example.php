@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+require_once("../include/include.php");
 
 function example(){
 	global $db_example;

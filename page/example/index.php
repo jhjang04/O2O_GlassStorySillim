@@ -1,6 +1,5 @@
 <?php
-//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
-require_once("../../core/include/include.php");
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
 require_once(API_PATH."/example/example.php");
 
 $rs = example();

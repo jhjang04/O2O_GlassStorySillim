@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+require_once("include/include.php");
 
 function getLoginPassword($id){
 	$conn = getConnection($db_info);
@@ -7,5 +7,7 @@ function getLoginPassword($id){
 	//$rs = $conn->excuteQuery($sql,"호준");
 	//$conn->release();
 	return "1";
+
+
 }
 ?>

@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>청춘과수원 관리</title>
+  <title>글라스스토리 관리</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -157,7 +157,7 @@ desired effect
           <img src="<?php echo BASE_URL; ?>/skin/dist/img/logo.png" class="img-circle" alt="Logo Image">
         </div>
         <div class="pull-left info">
-          <p>청춘과수원</p>
+          <p>글라스스토리</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> 배송가능</a>
         </div>

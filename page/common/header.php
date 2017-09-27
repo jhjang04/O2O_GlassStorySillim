@@ -159,7 +159,7 @@ desired effect
         <div class="pull-left info">
           <p>글라스스토리</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> 배송가능</a>
+          <a href="#"><i class="fa fa-building"></i> 신림점</a>
         </div>
       </div>
 

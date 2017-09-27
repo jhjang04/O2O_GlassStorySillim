@@ -82,9 +82,9 @@ desired effect
     <!-- Logo -->
     <a href="<?php echo BASE_URL; ?>/page/index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>CC</b></span>
+      <span class="logo-mini"><b>O2O</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>CC</b>fruit</span>
+      <span class="logo-lg"><b>O2O</b>Glass Story Sillim</span>
     </a>
 
     <!-- Header Navbar -->

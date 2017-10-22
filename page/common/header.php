@@ -44,6 +44,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>/skin/dist/css/skins/skin-blue.css">
 
+  <!-- bootstrap-toggle -->
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>/skin/plugins/bootstrap-toggle/bootstrap-toggle.min.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -222,10 +225,26 @@ desired effect
         <small></small>
       </h1>
 	  
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol> -->
+      
+      <?php
+        // echo "<pre>";
+        // var_dump($_LEVEL1);
+        // var_dump($_LEVEL2);
+        // echo "</pre>";
+
+        echo "<ol class='breadcrumb'>";
+        
+        echo "<li><i class='fa fa-bookmark-o'></i> {$_LEVEL1}</li>";
+        if (!empty($_LEVEL2)) {
+          echo "<li>{$_LEVEL2}</li>";
+        }
+
+        echo "<ol>";
+      ?>
     </section>
 	
 

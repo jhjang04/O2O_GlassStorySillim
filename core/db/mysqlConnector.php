@@ -15,9 +15,10 @@ class mysqlConnector extends abstractConnector{
 
 	
 	protected function getConnection() {
-		if($this->m_conn != null){
+		if (!empty($this->m_conn)) {
 			return $this->m_conn;
 		}
+		
 		$this->m_conn = mysqli_connect($this->m_host . ":" . $this->m_port , $this->m_user , $this->m_pwd , $this->m_db_name);
 		
 		if(mysqli_connect_error($this->m_conn)){

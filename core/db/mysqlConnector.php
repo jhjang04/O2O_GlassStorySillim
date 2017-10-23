@@ -25,8 +25,8 @@ class mysqlConnector extends abstractConnector{
 			//error
 			throw new Exception("db connection error");
 		}
-		mysqli_query($this->m_conn, "SET AUTOCOMMIT=0");
-		mysqli_query($this->m_conn, "START TRANSACTION");
+		// mysqli_query($this->m_conn, "SET AUTOCOMMIT=0");
+		// mysqli_query($this->m_conn, "START TRANSACTION");
 		mysqli_query($this->m_conn, "SET NAMES utf8");
 		mysqli_query($this->m_conn, "SET SESSION character_set_connection=utf8");
 		mysqli_query($this->m_conn, "SET SESSION character_set_results=utf8");

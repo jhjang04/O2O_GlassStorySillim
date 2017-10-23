@@ -49,7 +49,7 @@
                 );
 
                 $dbconnector = new mysqlConnector($db_info);
-                $products = $dbconnector->executeRawQuery("SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,uc.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2ousecheck AS uc WHERE goods.brand_code = brand.brand_code AND goods.company_code = company.company_code AND goods.group_code = gr.group_code AND goods.goods_code = uc.goods_code");
+                $products = $dbconnector->executeRawQuery("SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,gla.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2oglassstory AS gla WHERE goods.brand_code = brand.brand_code AND goods.company_code = company.company_code AND goods.group_code = gr.group_code AND goods.goods_code = gla.goods_code");
 
                 //make table
                 echo "<table class='table table-striped table-hover table-bordered'>";
@@ -82,7 +82,7 @@
       </div> <!-- /.container-fluid -->
     </section> <!-- /.content -->
 	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script> -->
 
 <script type="text/javascript">
 $(function() {
@@ -91,10 +91,24 @@ $(function() {
       return this.id.match(/toggle[0-9]+/);
     })
     .change(function() {
-      // alert(this.id + ': ' + $(this).prop('checked'));
+      // alert($(this).prop('checked'));
+      $.ajax({
+        url: "update-availability.php",
+        type: 'POST',
+        data: {
+          'id': this.id.slice(6),
+          'checked': $(this).prop('checked')
+        },
+        success: function(data) {
+          // console.log("success");
+          // console.log(data);
+        },
+        error: function() {
+          // console.log("error");
+        }
+      });
     });
 
-    //ajax
 });
 </script>
 

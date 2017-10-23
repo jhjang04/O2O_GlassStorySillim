@@ -1,5 +1,11 @@
 <?php
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+require_once(ROOT_PATH."/core/db/mysqlConnector.php");
+
+// header("Status: 200");
+
 $db_info = array(
+  'type' => 'MYSQL',
   'host' => 'localhost',
   'port' => 3306,
   'user_nm' => 'root',
@@ -7,7 +13,18 @@ $db_info = array(
   'db_name' => 'o2o_glass_story'
 );
 
-$conn = mysqli_connect($db_info['host'].':3306', $db_info['user_nm'], $db_info['pwd'], $db_info['db_name']);
+$dbconnector = new mysqlConnector($db_info);
 
+// echo "<pre>";
+// var_dump($_POST);
+// echo "</pre>";
+
+$availability = ($_POST['checked']=='true')?1:0;
+$goods_id = (int)$_POST['id'];
+
+$update_sql = "UPDATE o2oglassstory as gla SET gla.Availability={$availability} WHERE gla.Goods_Code={$goods_id} LIMIT 1";
+// var_dump($update_sql);
+$res = $dbconnector->executeRawQuery($update_sql);
+// var_dump($res);
 
 ?>

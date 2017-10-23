@@ -27,18 +27,22 @@ class mysqlConnector extends abstractConnector{
 		}
 		mysqli_query($this->m_conn, "SET AUTOCOMMIT=0");
 		mysqli_query($this->m_conn, "START TRANSACTION");
+		mysqli_query($this->m_conn, "SET NAMES utf8");
+		mysqli_query($this->m_conn, "SET SESSION character_set_connection=utf8");
+		mysqli_query($this->m_conn, "SET SESSION character_set_results=utf8");
+		mysqli_query($this->m_conn, "SET SESSION character_set_client=utf8");
 		
 		return $this->m_conn;
 	}
 	
 	
 	
-	public function excuteQuery($sql , $params=array())
+	public function executeQuery($sql , $params=array())
 	{
 		//if(!isset($params)){ $params = array();}
 		if(!is_array($params)){ $params = [$params]; }
 
-		$this->mLogger->info("call dao : ".debug_backtrace()[1]['function']);
+		// $this->mLogger->info("call dao : ".debug_backtrace()[1]['function']);
 		$this->mLogger->debug("excuqte Query :: $sql");
 		$this->mLogger->debug("params :: ".json_encode($params,JSON_UNESCAPED_UNICODE));
 
@@ -82,6 +86,14 @@ class mysqlConnector extends abstractConnector{
 		mysqli_stmt_close($stmt);
 
 		return $rs;
+	}
+
+	public function executeRawQuery($sql) {
+		$conn = $this->getConnection();
+		
+		$result = mysqli_query($this->m_conn, $sql);
+
+		return $result;
 	}
 	
 	

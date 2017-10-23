@@ -1,14 +1,16 @@
 <?php
 require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
-function doLogin($id , $password){
-	// $conn = getConnection($db_info);
-	// $sql = "";
-	//$rs = $conn->excuteQuery($sql,"");
-	//
-	//$conn->release();
+echo "login";
+function doLogin($id, $password){
+	// echo "dologin";
 	if($password == "1"){
 	//if($admin['password'] == $rs[0]['password']){
 		session_start();
+		// if (isset($_SESSION['is_logged']) && ($_SESSION['is_logged']=='YES')) {
+		// 	echo "location.href = '".BASE_URL."/page/index.php';";
+		// 	return;
+		// }
+
 		$_SESSION['is_logged'] = 'YES';
 		$_SESSION['id'] = $id;
 

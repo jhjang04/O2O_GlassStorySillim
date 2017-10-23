@@ -18,7 +18,8 @@ abstract class abstractConnector {
 	}
 
 	abstract protected function getConnection();
-	abstract public function excuteQuery($sql , $params);
+	abstract public function executeQuery($sql , $params);
+	abstract public function executeRawQuery($sql);
 	abstract public function commit();
 	abstract public function rollback();
 	abstract public function release($command);

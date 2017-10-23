@@ -4,6 +4,7 @@ header("Pragma: no-cache");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 date_default_timezone_set('Asia/Seoul');
 error_reporting(E_ALL & ~E_NOTICE);
+//TODO: 나중에 이거 처리
 ini_set("display_errors", 1);
 
 $ROOT_PATH = $_SERVER['CONTEXT_DOCUMENT_ROOT'];
@@ -22,6 +23,7 @@ define("API_URL" , BASE_URL."/api");
 $logger = SimpleLogger::getLogger();
 $logger->debug("REQUEST_URI : ".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 
+//TODO: ?? 이거 나중에 처리
 if($_REQUEST['api_name']) {
 	api_call($_REQUEST['api_name']);
 }
@@ -29,7 +31,6 @@ if($_REQUEST['api_name']) {
 if($_REQUEST['script_name']) {
 	script_call($_REQUEST['script_name']);
 }
-
 
 
 set_exception_handler('exception_handler');

@@ -1,5 +1,4 @@
 <?php
-//require_once("abstractConnector.php");
 require_once(ROOT_PATH."/core/db/abstractConnector.php");
 class postgreConnector extends abstractConnector{
 	
@@ -46,13 +45,13 @@ class postgreConnector extends abstractConnector{
 	
 	
 	
-	public function excuteQuery($sql , $params)
+	public function executeQuery($sql , $params)
 	{
 		if(!isset($types)){ $types = "";}
 		if(!isset($params)){ $params = array();}
 		if(!is_array($params)){ $params = [$params]; }
 		
-		$this->mLogger->info("call from :: ".debug_backtrace()[1]['function']);
+		// $this->mLogger->info("call from :: ".debug_backtrace()[1]['function']);
 		$this->mLogger->debug("excuqte Query :: $sql");
 		$this->mLogger->debug("params :: ".json_encode($params));
 		$this->mLogger->debug("types :: ".$types);
@@ -67,6 +66,11 @@ class postgreConnector extends abstractConnector{
 		}
 		
 		return $rs;
+	}
+
+	public function executeRawQuery($sql) {
+		//TODO
+		return null;
 	}
 	
 	

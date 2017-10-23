@@ -5,7 +5,7 @@
 	$_TITLE = "컬러렌즈";
 	
   require_once(ROOT_PATH."/page/common/header.php");
-  // require_once(ROOT_PATH."/core/db/mysqlConnector.php");
+  require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 ?>
 <style media="screen">
 /*      .scrollTest{
@@ -48,33 +48,21 @@
                   'db_name' => 'o2o_glass_story'
                 );
 
-                # db connector 오류 있음
-                $conn = mysqli_connect($db_info['host'].':3306', $db_info['user_nm'], $db_info['pwd'], $db_info['db_name']);
-                // echo "<pre>";
-                // var_dump($conn);
-                // echo "</pre>";
-
-                // 한글 깨짐
-                // --> http://luckyyowu.tistory.com/279 참고
-                mysqli_query($conn, "SET NAMES utf8");
-                mysqli_query($conn, "SET SESSION character_set_connection=utf8");
-                mysqli_query($conn, "SET SESSION character_set_results=utf8");
-                mysqli_query($conn, "SET SESSION character_set_client=utf8");
-
-                // select
-                $products = mysqli_query($conn, "SELECT goods.Goods_Code AS idx, brand.Brand_Name, company.Company_Name, gr.Group_Name, goods.Goods_Name FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr WHERE goods.Brand_Code = brand.Brand_Code AND goods.Company_Code = company.Company_Code AND goods.Group_Code = gr.Group_Code");
+                $dbconnector = new mysqlConnector($db_info);
+                $products = $dbconnector->executeRawQuery("SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,uc.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2ousecheck AS uc WHERE goods.brand_code = brand.brand_code AND goods.company_code = company.company_code AND goods.group_code = gr.group_code AND goods.goods_code = uc.goods_code");
 
                 //make table
-                echo "<table class='table table-striped table-hover table-condensed'>";
-                echo "<thead><tr><th>index</th><th>브랜드명</th><th>회사명</th><th>그룹명</th><th>상품명</th></tr></thead>";
+                echo "<table class='table table-striped table-hover table-bordered'>";
+                echo "<thead><tr><th>index</th><th>브랜드명</th><th>회사명</th><th>그룹명</th><th>상품명</th><th>프로그램 사용 여부</th></tr></thead>";
                 echo "<tbody>";
                 while ($prod = mysqli_fetch_array($products)) {
                   echo "<tr>";
                   echo "<td>{$prod['idx']}</td>";
-                  echo "<td>{$prod['Brand_Name']}</td>";
-                  echo "<td>{$prod['Company_Name']}</td>";
-                  echo "<td>{$prod['Group_Name']}</td>";
-                  echo "<td>{$prod['Goods_Name']}</td>";
+                  echo "<td>{$prod['brand_name']}</td>";
+                  echo "<td>{$prod['company_name']}</td>";
+                  echo "<td>{$prod['group_name']}</td>";
+                  echo "<td>{$prod['goods_name']}</td>";
+                  echo "<td><input id='toggle{$prod['idx']}' type='checkbox'".(($prod['availability']=='0')?'':'checked')." data-toggle='toggle' data-size='small'></td>";  //toggle
                   echo "</tr>";
                 }
                 echo "</tbody>";
@@ -95,12 +83,22 @@
     </section> <!-- /.content -->
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
-<script type="text/javascript">
 
+<script type="text/javascript">
+$(function() {
+  $('input')
+    .filter(function() {
+      return this.id.match(/toggle[0-9]+/);
+    })
+    .change(function() {
+      // alert(this.id + ': ' + $(this).prop('checked'));
+    });
+
+    //ajax
+});
 </script>
 
-	
-	
+
 <?php
   require_once(ROOT_PATH."/page/common/footer.php");
 ?>

@@ -71,11 +71,11 @@ require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
           </label>
         </div>-->
         <form name="login_from" method="post" action="<?php echo API_URL."/loginApi.php"?>">
-		<label for="inputEmail" class="sr-only">아이디</label>
-        <input name="script_name" type="hidden" value="doLogin">
-        <input type="text" name="id" id="id" class="form-control" placeholder="ID" required autofocus>
-        <label for="password" class="sr-only">비밀번호</label>
-        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+		      <label for="inputEmail" class="sr-only">아이디</label>
+          <input name="script_name" type="hidden" value="doLogin">
+          <input type="text" name="id" id="id" class="form-control" placeholder="ID" required autofocus>
+          <label for="password" class="sr-only">비밀번호</label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
         
           <button class="btn btn-lg btn-primary btn-block" type="submit">관리하러 가기</button>
         </form>

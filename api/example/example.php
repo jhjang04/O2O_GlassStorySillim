@@ -7,7 +7,7 @@ function example(){
 	$conn = getConnection($db_example);
 	$sql = "select * from ccfruit_user
 			where username like concat('%', ? ,'%')";
-	$rs = $conn->excuteQuery($sql,["호준"]);
+	$rs = $conn->executeQuery($sql,["호준"]);
 	$conn->release();
 	return $rs;
 }

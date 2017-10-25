@@ -4,14 +4,7 @@ require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 
 // header("Status: 200");
 
-$db_info = array(
-  'type' => 'MYSQL',
-  'host' => 'localhost',
-  'port' => 3306,
-  'user_nm' => 'root',
-  'pwd' => null,
-  'db_name' => 'o2o_glass_story'
-);
+global $db_info;
 
 $dbconnector = new mysqlConnector($db_info);
 

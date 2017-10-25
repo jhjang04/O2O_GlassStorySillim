@@ -59,14 +59,7 @@
 
 
     if (!isset($err_message)) {
-      $db_info = array(
-        'type' => 'MYSQL',
-        'host' => 'localhost',
-        'port' => 3306,
-        'user_nm' => 'root',
-        'pwd' => null,
-        'db_name' => 'o2o_glass_story'
-      );
+      global $db_info;
 
       $dbconnector = new mysqlConnector($db_info);
       $sql = "INSERT INTO o2ocolorlens (id, color_code, power_start, power_end, astigmatism, lens_name, lens_path, availability) VALUES (NULL, {$color_code}, {$power_start}, {$power_end}, {$astigmatism}, '{$lens_name}', '{$user_pic}', '1')";
@@ -115,14 +108,7 @@
                       <td><label class="control-label">렌즈 색깔</label></td>
                       <td>
                         <?php
-                        $db_info = array(
-                          'type' => 'MYSQL',
-                          'host' => 'localhost',
-                          'port' => 3306,
-                          'user_nm' => 'root',
-                          'pwd' => null,
-                          'db_name' => 'o2o_glass_story'
-                        );
+                        global $db_info;
 
                         $dbconnector = new mysqlConnector($db_info);
                         $result = $dbconnector->executeRawQuery("SELECT * FROM o2ocolor");

@@ -6,6 +6,11 @@
 	
   require_once(ROOT_PATH."/page/common/header.php");
   require_once(ROOT_PATH."/core/db/mysqlConnector.php");
+
+  // global $_MENU;
+  // echo "<pre>";
+  // var_dump($_MENU);
+  // echo "</pre>";
 ?>
 <style media="screen">
 </style>
@@ -54,7 +59,8 @@
                 echo "<th>난시기능</th>";
                 echo "<th>렌즈명</th>";
                 echo "<th>파일경로</th>";
-                echo "<th>수정</th>";
+                echo "<th>미리보기</th>";
+                echo "<th>수정/삭제</th>";
                 echo "</thead>";
                 echo "<tbody>";
                 while ($prod = mysqli_fetch_array($products)) {
@@ -64,9 +70,9 @@
                   echo "<td>".sprintf("%.2f ~ %.2f", $prod['power_start'], $prod['power_end'])."</td>";
                   echo "<td>".(($prod['astigmatism']==1)?"O":"X")."</td>";
                   echo "<td>{$prod['lens_name']}</td>";
-                  // echo "<td><a href='".ROOT_PATH."/color-lens/"."{$prod['lens_path']}'>".ROOT_PATH."/color-lens/"."{$prod['lens_path']}</a></td>";
                   echo "<td>{$prod['lens_path']}</td>";
-                  echo "<td><a href='modify.php'>수정</a></td>";
+                  echo "<td><img src='../../../color-lens/{$prod['lens_path']}' height='40' width='40'></td>";
+                  echo "<td><a href='modify.php?id={$prod['idx']}'>수정/삭제</a></td>";
                   echo "</tr>";
                 }
                 echo "</tbody>";

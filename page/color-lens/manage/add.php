@@ -1,7 +1,7 @@
 <?php
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
     $_LEVEL1 = "color-lens";
-    $_LEVEL2 = "manage";
+    $_LEVEL2 = "1";
     $_LEVEL3 = "add";
     $_TITLE = "컬러렌즈";
     
@@ -69,7 +69,7 @@
       );
 
       $dbconnector = new mysqlConnector($db_info);
-      $sql = "INSERT INTO o2ocolorlens (id, color_code, power_start, power_end, astigmatism, lens_name, lens_path, availability) VALUES (NULL, {$color_code}, {$power_start}, {$power_end}, {$astigmatism}, '{$lens_name}', '{$lens_path}', '1')";
+      $sql = "INSERT INTO o2ocolorlens (id, color_code, power_start, power_end, astigmatism, lens_name, lens_path, availability) VALUES (NULL, {$color_code}, {$power_start}, {$power_end}, {$astigmatism}, '{$lens_name}', '{$user_pic}', '1')";
       if (!$dbconnector->executeRawQuery($sql)) {
         $err_message = $dbconnector->getError();
       } else {
@@ -183,6 +183,10 @@
 
                   </table>
                 </form>
+
+                <a href="index.php" class="btn btn-default" role="button">
+                  <i class="fa fa-backward"></i> 뒤로
+                </a>
               </div>
             </div>
           </div>

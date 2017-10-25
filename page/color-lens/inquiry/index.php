@@ -1,7 +1,7 @@
 <?php
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
 	$_LEVEL1 = "color-lens";
-  $_LEVEL2 = "inquiry";
+  $_LEVEL2 = "0";
 	$_TITLE = "컬러렌즈";
 	
   require_once(ROOT_PATH."/page/common/header.php");
@@ -49,11 +49,12 @@
                 );
 
                 $dbconnector = new mysqlConnector($db_info);
-                $products = $dbconnector->executeRawQuery("SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,gla.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2oglassstory AS gla WHERE goods.brand_code = brand.brand_code AND goods.company_code = company.company_code AND goods.group_code = gr.group_code AND goods.goods_code = gla.goods_code");
+                $products = $dbconnector->executeRawQuery("");
 
                 //make table
                 echo "<table class='table table-striped table-hover table-bordered'>";
-                echo "<thead><tr><th>index</th><th>브랜드명</th><th>회사명</th><th>그룹명</th><th>상품명</th><th>프로그램 사용 여부</th></tr></thead>";
+                // echo "<thead><tr><th>index</th><th>브랜드명</th><th>회사명</th><th>그룹명</th><th>상품명</th><th>프로그램 사용 여부</th></tr></thead>";
+                // index, 색깔, 도수 범위(계산), 난시여부, 렌즈명, 경로, 사용여부
                 echo "<tbody>";
                 while ($prod = mysqli_fetch_array($products)) {
                   echo "<tr>";
@@ -82,8 +83,6 @@
       </div> <!-- /.container-fluid -->
     </section> <!-- /.content -->
 	
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script> -->
-
 <script type="text/javascript">
 $(function() {
   $('input')
@@ -108,7 +107,6 @@ $(function() {
         }
       });
     });
-
 });
 </script>
 

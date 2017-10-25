@@ -193,7 +193,12 @@ desired effect
 				foreach($menu['menu'] as $index => $submenu){
 					$subactive = "";
 					
-					if($index == $_LEVEL2){
+          // echo "<pre>";
+          // var_dump($index);
+          // var_dump($_LEVEL2);
+          // var_dump($submenu);
+          // echo "</pre>";
+          if($index == $_LEVEL2){
 						$subactive = "active";
 					}
 					

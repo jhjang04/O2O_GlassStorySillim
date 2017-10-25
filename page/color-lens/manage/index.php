@@ -32,7 +32,7 @@
 
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">컬러렌즈 수정 &amp; 삭제</h3>
+                <h3 class="box-title">컬러렌즈 조회 &amp; 수정</h3>
               </div> <!-- /.box-header -->
               <div class="box-body">
                 <!--컬러렌즈 관리 body-->
@@ -47,7 +47,7 @@
                 );
 
                 $dbconnector = new mysqlConnector($db_info);
-                $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code");
+                $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path, cl.availability FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code");
 
                 //make table
                 echo "<table class='table table-striped table-hover table-bordered'>";
@@ -60,6 +60,7 @@
                 echo "<th>렌즈명</th>";
                 echo "<th>파일경로</th>";
                 echo "<th>미리보기</th>";
+                echo "<th>프로그램 사용여부</th>";
                 echo "<th>수정/삭제</th>";
                 echo "</thead>";
                 echo "<tbody>";
@@ -72,6 +73,7 @@
                   echo "<td>{$prod['lens_name']}</td>";
                   echo "<td>{$prod['lens_path']}</td>";
                   echo "<td><img src='../../../color-lens/{$prod['lens_path']}' height='40' width='40'></td>";
+                  echo "<td><input id='toggle{$prod['idx']}' type='checkbox'".(($prod['availability']=='0')?'':'checked')." data-toggle='toggle' data-size='small'></td>";  //toggle
                   echo "<td><a href='modify.php?id={$prod['idx']}'>수정/삭제</a></td>";
                   echo "</tr>";
                 }
@@ -87,6 +89,30 @@
     </section> <!-- /.content -->
 	
 <script type="text/javascript">
+$(function() {
+  $('input')
+    .filter(function() {
+      return this.id.match(/toggle[0-9]+/);
+    })
+    .change(function() {
+      // alert($(this).prop('checked'));
+      $.ajax({
+        url: "update-availability.php",
+        type: 'POST',
+        data: {
+          'id': this.id.slice(6),
+          'checked': $(this).prop('checked')
+        },
+        success: function(data) {
+          // console.log("success");
+          // console.log(data);
+        },
+        error: function() {
+          // console.log("error");
+        }
+      });
+    });
+});
 </script>
 
 

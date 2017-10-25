@@ -1,7 +1,7 @@
 <?php
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
     $_LEVEL1 = "color-lens";
-    $_LEVEL2 = "1";
+    $_LEVEL2 = "manage";
     $_LEVEL3 = "add";
     $_TITLE = "컬러렌즈";
     

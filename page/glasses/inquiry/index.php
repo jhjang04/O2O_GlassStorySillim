@@ -18,22 +18,7 @@
   }
 ?>
 <style media="screen">
-/*fieldset.scheduler-border {
-  border: 1px groove #ddd !important;
-  padding: 0 1.4em 1.4em 1.4em !important;
-  margin: 0 0 1.5em 0 !important;
-  -webkit-box-shadow:  0px 0px 0px 0px #000;
-  box-shadow:  0px 0px 0px 0px #000;
-}
 
-legend.scheduler-border {
-  font-size: 1.2em !important;
-  font-weight: bold !important;
-  text-align: left !important;
-  width:auto;
-  padding:0 10px;
-  border-bottom:none;
-}*/
 </style>
 
 <!-- Main content -->
@@ -88,7 +73,7 @@ legend.scheduler-border {
               </div>
             </div>
 
-            <div class="box box-primary" id="resultbox" <?php if(0){echo "hidden";} ?>>
+            <div class="box box-primary" id="resultbox" <?php if(!isset($_POST['btnsearch'])){echo "hidden";} ?>>
               <div class="box-header with-border">
                 <h3 class="box-title">안경/도수렌즈 검색 결과</h3>
               </div> <!-- /.box-header -->

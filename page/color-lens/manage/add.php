@@ -170,7 +170,7 @@
                 </form>
 
                 <a href="index.php" class="btn btn-default" role="button">
-                  <i class="fa fa-backward"></i> 뒤로
+                  <i class="fa fa-backward"></i> &nbsp; 뒤로
                 </a>
               </div>
             </div>

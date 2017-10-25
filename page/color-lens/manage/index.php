@@ -20,7 +20,7 @@
                 <h3 class="box-title">컬러렌즈 추가</h3>
               </div>
               <div class="box-body">
-                <a href="add.php" class="btn btn-primary" role="button">컬러렌즈 추가</a>
+                <a href="add.php" class="btn btn-primary" role="button"><i class="fa fa-plus-circle"></i> &nbsp; 컬러렌즈 추가</a>
               </div>
             </div>
 

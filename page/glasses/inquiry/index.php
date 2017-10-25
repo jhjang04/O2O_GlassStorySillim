@@ -32,7 +32,7 @@
                 <h3 class="box-title">검색 옵션 설정</h3>
               </div> <!-- /.box-header -->
               <div class="box-body">
-                <form method="post">
+                <form method="post" id="searchform">
                   국산/수입&nbsp;&nbsp;&nbsp;&nbsp;
                   <label class="checkbox-inline"><input type="checkbox" value="">국산1(케미)</label>
                   <label class="checkbox-inline"><input type="checkbox" value="">수입1(니덱)</label>
@@ -58,7 +58,7 @@
                   <label class="checkbox-inline"><input type="checkbox" value="">가능</label>
 
                   <br>
-                  청광차당 가능 여부&nbsp;&nbsp;&nbsp;&nbsp;
+                  청광차단 가능 여부&nbsp;&nbsp;&nbsp;&nbsp;
                   <label class="checkbox-inline"><input type="checkbox" value="">가능</label>
 
                   <hr>
@@ -88,7 +88,7 @@
   
 <script type="text/javascript">
 $(function() {
-
+//$('#searchform')[0].reset();
 </script>
 
 

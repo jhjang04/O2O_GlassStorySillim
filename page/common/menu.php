@@ -9,7 +9,6 @@ $_MENU = array();
 $_MENU['dashboard'] = add_menu("대시보드", "fa-tachometer", BASE_URL."/page/index.php");
 
 $_MENU['color-lens'] = add_menu("컬러렌즈", "fa-eye", BASE_URL."/page/color-lens/index.php");
-// $_MENU['color-lens']['menu'][] = add_menu("조회", "fa-list", BASE_URL."/page/color-lens/inquiry/index.php");
 $_MENU['color-lens']['menu'][] = add_menu("조회 및 관리", "fa-file-text-o", BASE_URL."/page/color-lens/manage/index.php");
 
 $_MENU['glasses'] = add_menu("안경/도수렌즈", "fa-user-circle", BASE_URL."/page/glasses/index.php");

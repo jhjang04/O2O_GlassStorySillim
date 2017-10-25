@@ -241,6 +241,9 @@ desired effect
         echo "<li><i class='fa fa-bookmark-o'></i> {$_LEVEL1}</li>";
         if (!empty($_LEVEL2)) {
           echo "<li>{$_LEVEL2}</li>";
+          if (!empty($_LEVEL3)) {
+            echo "<li>{$_LEVEL3}</li>";
+          }
         }
 
         echo "<ol>";

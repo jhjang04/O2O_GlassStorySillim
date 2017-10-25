@@ -127,7 +127,10 @@ class mysqlConnector extends abstractConnector{
 		mysqli_close($this->m_conn);
 		$this->m_conn = null;
 	}
-	
+
+	public function getError() {
+		return mysqli_error($this->m_conn);
+	}	
 }
 ?>
 

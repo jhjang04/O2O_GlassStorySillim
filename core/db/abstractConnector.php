@@ -23,6 +23,7 @@ abstract class abstractConnector {
 	abstract public function commit();
 	abstract public function rollback();
 	abstract public function release($command);
+	abstract public function getError();
 
 	public function getDbInfo(){
 		return json_encode(

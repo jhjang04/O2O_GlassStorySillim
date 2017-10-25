@@ -105,6 +105,9 @@ class postgreConnector extends abstractConnector{
 		$this->m_conn = null;
 	}
 	
+	public function getError() {
+		return null;
+	}
 }
 ?>
 

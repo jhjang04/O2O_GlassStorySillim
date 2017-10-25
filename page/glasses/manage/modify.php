@@ -24,21 +24,11 @@
 
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
   $_LEVEL1 = "glasses";
-  $_LEVEL2 = "inquiry";
-  $_LEVEL3 = "detail";
+  $_LEVEL2 = "manage";
+  $_LEVEL3 = "modify";
   $_TITLE = "안경/도수렌즈";
     
   require_once(ROOT_PATH."/page/common/header.php");
-
-  // echo "<pre>";
-  // var_dump($_POST);
-  // echo "</pre>";
-  
-  // echo "<pre>";
-  // var_dump($_FILES);
-  // echo "</pre>";
-
-
 
   if (isset($_POST['btnupdate'])) {
     // $err_message = "Please enter username";

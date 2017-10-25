@@ -13,6 +13,7 @@ $_MENU['color-lens']['menu'][] = add_menu("조회 및 관리", "fa-file-text-o",
 
 $_MENU['glasses'] = add_menu("안경/도수렌즈", "fa-user-circle", BASE_URL."/page/glasses/index.php");
 $_MENU['glasses']['menu'][] = add_menu("조회", "fa-list", BASE_URL."/page/glasses/inquiry/index.php");
+$_MENU['glasses']['menu'][] = add_menu("관리", "fa-file-text-o", BASE_URL."/page/glasses/manage/index.php");
 
 $_MENU['sales'] = add_menu("ERP 조회", "fa-line-chart", BASE_URL."/page/sales/index.php");
 $_MENU['sales']['menu'][] = add_menu("매출 조회", "fa-list", BASE_URL."/page/sales/inquiry/index.php");

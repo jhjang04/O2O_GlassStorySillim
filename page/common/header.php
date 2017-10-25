@@ -16,6 +16,7 @@
   
   require_once(ROOT_PATH."/page/common/common.php");
   require_once(ROOT_PATH."/page/common/menu.php");
+  require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 ?>
 
 <!DOCTYPE html>

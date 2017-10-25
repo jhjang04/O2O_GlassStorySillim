@@ -5,7 +5,7 @@
 	$_TITLE = "컬러렌즈";
 	
   require_once(ROOT_PATH."/page/common/header.php");
-  require_once(ROOT_PATH."/core/db/mysqlConnector.php");
+  // require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 
   // global $_MENU;
   // echo "<pre>";

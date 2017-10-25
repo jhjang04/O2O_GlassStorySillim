@@ -35,4 +35,6 @@ if($_REQUEST['script_name']) {
 
 set_exception_handler('exception_handler');
 
+
+require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 ?>

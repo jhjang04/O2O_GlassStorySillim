@@ -1,6 +1,5 @@
 <?php
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
-  require_once(ROOT_PATH."/core/db/mysqlConnector.php");
   if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     global $db_info;
@@ -30,7 +29,6 @@
     $_TITLE = "컬러렌즈";
     
   require_once(ROOT_PATH."/page/common/header.php");
-  require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 
   // echo "<pre>";
   // var_dump($_POST);

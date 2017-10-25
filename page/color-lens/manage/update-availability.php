@@ -1,6 +1,5 @@
 <?php
 require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
-require_once(ROOT_PATH."/core/db/mysqlConnector.php");
 
 // header("Status: 200");
 

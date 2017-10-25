@@ -4,7 +4,7 @@
     $id = $_GET['id'];
     global $db_info;
 
-    $dbconnector = new mysqlConnector($db_info);
+    $dbconnector = getConnection($db_info);
     $sql = "SELECT id AS idx, color_code, power_start, power_end, astigmatism, lens_name, lens_path FROM o2ocolorlens AS cl WHERE cl.id={$id} LIMIT 1";
     $res = $dbconnector->executeRawQuery($sql);
     if (!$res) {
@@ -86,7 +86,7 @@
     if (!isset($err_message)) {
       global $db_info;
 
-      $dbconnector = new mysqlConnector($db_info);
+      $dbconnector = getConnection($db_info);
       $sql = "UPDATE o2ocolorlens AS cl SET color_code={$color_code}, lens_name='{$lens_name}', power_start={$power_start}, power_end={$power_end}, astigmatism={$astigmatism}, lens_path='{$user_pic}' WHERE id={$idx}";
       if (!$dbconnector->executeRawQuery($sql)) {
         $err_message = $dbconnector->getError();
@@ -100,7 +100,7 @@
     //delete code
     global $db_info;
 
-    $dbconnector = new mysqlConnector($db_info);
+    $dbconnector = getConnection($db_info);
     $sql = "DELETE FROM o2ocolorlens WHERE id={$idx}";
     if (!$dbconnector->executeRawQuery($sql)) {
       $err_message = $dbconnector->getError();
@@ -150,7 +150,7 @@
                         <?php
                         global $db_info;
 
-                        $dbconnector = new mysqlConnector($db_info);
+                        $dbconnector = getConnection($db_info);
                         $result = $dbconnector->executeRawQuery("SELECT * FROM o2ocolor");
                         echo "<select class='form-control' name='color_code'>";
                         while ($row = mysqli_fetch_array($result)) {

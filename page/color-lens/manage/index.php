@@ -33,7 +33,7 @@
                 <?php
                 global $db_info;
 
-                $dbconnector = new mysqlConnector($db_info);
+                $dbconnector = getConnection($db_info);
                 $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path, cl.availability FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code");
 
                 // $conn = getConnection($db_info);

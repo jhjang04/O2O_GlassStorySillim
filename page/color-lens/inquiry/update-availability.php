@@ -1,12 +1,9 @@
 <?php
 require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
-// require_once(ROOT_PATH."/core/db/mysqlConnector.php");
-
-// header("Status: 200");
 
 global $db_info;
 
-$dbconnector = new mysqlConnector($db_info);
+$dbconnector = getConnection($db_info);
 
 // echo "<pre>";
 // var_dump($_POST);

@@ -60,7 +60,7 @@
     if (!isset($err_message)) {
       global $db_info;
 
-      $dbconnector = new mysqlConnector($db_info);
+      $dbconnector = getConnection($db_info);
       $sql = "INSERT INTO o2ocolorlens (id, color_code, power_start, power_end, astigmatism, lens_name, lens_path, availability) VALUES (NULL, {$color_code}, {$power_start}, {$power_end}, {$astigmatism}, '{$lens_name}', '{$user_pic}', '1')";
       if (!$dbconnector->executeRawQuery($sql)) {
         $err_message = $dbconnector->getError();
@@ -109,7 +109,7 @@
                         <?php
                         global $db_info;
 
-                        $dbconnector = new mysqlConnector($db_info);
+                        $dbconnector = getConnection($db_info);
                         $result = $dbconnector->executeRawQuery("SELECT * FROM o2ocolor");
                         echo "<select class='form-control' name='color_code'>";
                         while ($row = mysqli_fetch_array($result)) {

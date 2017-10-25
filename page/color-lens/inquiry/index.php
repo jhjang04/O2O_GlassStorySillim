@@ -40,7 +40,7 @@
                 <?php
                 global $db_info;
 
-                $dbconnector = new mysqlConnector($db_info);
+                $dbconnector = getConnection($db_info);
                 $products = $dbconnector->executeRawQuery("SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,gla.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2oglassstory AS gla WHERE goods.brand_code = brand.brand_code AND goods.company_code = company.company_code AND goods.group_code = gr.group_code AND goods.goods_code = gla.goods_code");
 
                 //make table

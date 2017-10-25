@@ -5,7 +5,7 @@ require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
 
 global $db_info;
 
-$dbconnector = new mysqlConnector($db_info);
+$dbconnector = getConnection($db_info);
 
 
 $availability = ($_POST['checked']=='true')?1:0;

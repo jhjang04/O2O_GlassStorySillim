@@ -34,7 +34,7 @@
                 global $db_info;
 
                 $dbconnector = getConnection($db_info);
-                $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path, cl.availability FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code");
+                $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path, cl.availability FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code ORDER BY cl.id ASC");
 
                 // $conn = getConnection($db_info);
                 // $sql = "SELECT goods.goods_code AS idx, brand.brand_name, company.company_name, gr.group_name, goods.goods_name,gla.availability FROM tblgoods AS goods, tblbrand AS brand, tblcompany AS company, tblgroup AS gr,o2oglassstory AS gla WHERE goods.brand_code = ? AND goods.company_code = ? AND goods.group_code = ? AND goods.goods_code = ?";

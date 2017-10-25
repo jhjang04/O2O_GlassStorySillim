@@ -17,9 +17,9 @@ $_MENU['glasses']['menu'][] = add_menu("조회", "fa-list", BASE_URL."/page/glas
 $_MENU['sales'] = add_menu("ERP 조회", "fa-line-chart", BASE_URL."/page/sales/index.php");
 $_MENU['sales']['menu'][] = add_menu("매출 조회", "fa-list", BASE_URL."/page/sales/inquiry/index.php");
 
-$_MENU['code'] = add_menu("코드 관리", "fa-user-circle", BASE_URL."/page/code/index.php");
-$_MENU['code']['menu'][] = add_menu("색상", "fa-user-circle", BASE_URL."/page/code/color/index.php");
-$_MENU['code']['menu'][] = add_menu("브랜드", "fa-user-circle", BASE_URL."/page/code/brand/index.php");
+$_MENU['code'] = add_menu("코드 관리", "fa-code", BASE_URL."/page/code/index.php");
+$_MENU['code']['menu'][] = add_menu("색상", "fa-paint-brush", BASE_URL."/page/code/color/index.php");
+$_MENU['code']['menu'][] = add_menu("브랜드", "fa-building", BASE_URL."/page/code/brand/index.php");
 
 ?>
 

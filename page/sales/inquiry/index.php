@@ -18,16 +18,17 @@
                 <h3 class="box-title">매출 차트</h3>
               </div> <!-- /.box-header -->
               <div class="box-body">
-                
+
               </div>
             </div>
           </div>
         </div>
       </div> <!-- /.container-fluid -->
     </section> <!-- /.content -->
-	
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
-$(function() {
 
 </script>
 

@@ -109,8 +109,6 @@
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script> -->
 
-<script src="<?php echo BASE_URL;?>/skin/dist/js/editable.js"></script>
-
 <script src="<?php echo BASE_URL;?>/skin/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

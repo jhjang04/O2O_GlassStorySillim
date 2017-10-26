@@ -15,10 +15,10 @@
           <div class="col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">header</h3>
+                <h3 class="box-title">매출 차트</h3>
               </div> <!-- /.box-header -->
               <div class="box-body">
-                body
+                
               </div>
             </div>
           </div>

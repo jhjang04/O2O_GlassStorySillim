@@ -7,65 +7,24 @@
     
   require_once(ROOT_PATH."/page/common/header.php");
 
-  // echo "<pre>";
-  // var_dump($_POST);
-  // echo "</pre>";
-  
-  // echo "<pre>";
-  // var_dump($_FILES);
-  // echo "</pre>";
-
-
   if (isset($_POST['btnupload'])) {
-    // $err_message = "Please enter username";
-    // $success_message = "success";
-    $color_code = (int)$_POST['color_code'];
-    $lens_name = $_POST['lens_name'];
-    $power_start = floatval($_POST['power_start']);
-    $power_end = floatval($_POST['power_end']);
-    $astigmatism = $_POST['astigmatism'];
-
-    $img_file_name = $_FILES['lens_image']['name'];
-    $img_tmp_path = $_FILES['lens_image']['tmp_name'];
-    $img_size = $_FILES['lens_image']['size'];
-
-    //error check
-    if (0) {
-      //텍스트 빈 칸 있을 경우
-      //--> required 붙였으니까 대충 생략
-    } else {
-      //img upload
-      $upload_dir = ROOT_PATH.'/color-lens/';
-      $img_ext = strtolower(pathinfo($img_file_name, PATHINFO_EXTENSION));
-      $valid_extensions = array('jpeg', 'jpg', 'png', 'gif');
-      $user_pic = rand(1000, 1000000).".".$img_ext; //rename
-
-      if (in_array($img_ext, $valid_extensions)) {
-        if ($img_size < 30000000) {
-          //below 10mb
-          $lens_path = $upload_dir.$user_pic;
-          // echo "<pre>";
-          // var_dump($lens_path);
-          // echo "</pre>";
-          move_uploaded_file($img_tmp_path, $lens_path);
-        } else {
-          $err_message = "이미지 파일 용량은 30mb로 제한됩니다";
-        }
-      } else {
-        $err_message = "jpeg, jpg, png, gif 파일만 허용됩니다";
-      }
-    }
-
+    $glasses_name = $_POST['glasses_name'];
+    $brand_code = $_POST['brand_code'];
+    $price = $_POST['price'];
+    $can_photochromic = $_POST['can_photochromic'];
+    $can_block_bluelight = $_POST['can_block_bluelight'];
+    $block_bluelight_price = $_POST['block_bluelight_price'];
+    $uv_max = $_POST['uv_max'];
 
     if (!isset($err_message)) {
       global $db_info;
 
       $dbconnector = getConnection($db_info);
-      $sql = "INSERT INTO o2ocolorlens (id, color_code, power_start, power_end, astigmatism, lens_name, lens_path, availability) VALUES (NULL, {$color_code}, {$power_start}, {$power_end}, {$astigmatism}, '{$lens_name}', '{$user_pic}', '1')";
+      $sql = "INSERT INTO o2oglasses (glasses_id, name, brand_code, price, can_photochromic, can_block_bluelight, block_bluelight_price, uv_max, remark) VALUES (NULL, '{$glasses_name}', '{$brand_code}', '{$price}', '{$can_photochromic}', '{$can_block_bluelight}', '{$block_bluelight_price}', '{$uv_max}', '')";
       if (!$dbconnector->executeRawQuery($sql)) {
         $err_message = $dbconnector->getError();
       } else {
-        $success_message = "컬러렌즈 추가가 완료되었습니다";
+        $success_message = "안경/도수렌즈 추가가 완료되었습니다";
         // header("refresh:5;index.php");
       }
     }
@@ -97,65 +56,77 @@
           <div class="col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">컬러렌즈 추가</h3>
+                <h3 class="box-title">안경/도수렌즈 추가</h3>
               </div> <!-- /.box-header -->
               <div class="box-body">
                 <form method="post" enctype="multipart/form-data" class="form-horizontal">
                   <table class="table table-bordered table-responsive">
-                    <!-- 색깔 -->
+                    <!-- 이름 -->
                     <tr>
-                      <td><label class="control-label">렌즈 색깔</label></td>
+                      <td><label class="control-label">안경/도수렌즈 이름</label></td>
+                      <td><input class="form-control" type="text" name="glasses_name" placeholder="Enter glasses/lens name" required/></td>
+                    </tr>
+
+                    <!-- 브랜드 (코드) -->
+                    <tr>
+                      <td><label class="control-label">안경/도수렌즈 브랜드</label></td>
                       <td>
                         <?php
                         global $db_info;
 
                         $dbconnector = getConnection($db_info);
-                        $result = $dbconnector->executeRawQuery("SELECT * FROM o2ocolor");
-                        echo "<select class='form-control' name='color_code'>";
+                        $result = $dbconnector->executeRawQuery("SELECT * FROM o2obrand");
+                        echo "<select class='form-control' name='brand_code'>";
                         while ($row = mysqli_fetch_array($result)) {
-                          echo "<option value='{$row['color_code']}'>{$row['color_name']}</option>";
+                          echo "<option value='{$row['brand_code']}'>{$row['brand_name']}</option>";
                         }
                         echo "</select>";
                         ?>
                       </td>
                     </tr>
 
-                    <!-- 도수 -->
+                    <!-- 가격 -->
                     <tr>
-                      <td><label class="control-label">도수범위(시작~끝)</label></td>
-                      <td>
-                        <div class="input-group">
-                          <input type="number" step="0.01" class="form-control" name="power_start" placeholder="Enter power start" required>
-                          <span class="input-group-addon">~</span>
-                          <input type="number" step="0.01" class="form-control" name="power_end" placeholder="Enter power end" required>
-                        </div>
-                      </td>
+                      <td><label class="control-label">가격</label></td>
+                      <td><input class="form-control" type="text" name="price" placeholder="Enter price" required/></td>
                     </tr>
 
-                    <!-- 난시 -->
+                    <!-- 변색 가능 -->
                     <tr>
-                      <td><label>난시 기능</label></td>
+                      <td><label>변색 가능</label></td>
                       <td>
-                        <select class="form-control" name="astigmatism">
+                        <select class="form-control" name="can_photochromic">
                           <option value="1">O</option>
                           <option value="0">X</option>
                         </select>
                       </td>
                     </tr>
 
-                    <!-- 렌즈명 -->
+                    <!-- 청광 차단 가능 -->
                     <tr>
-                      <td><label class="control-label">렌즈 이름</label></td>
-                      <td><input class="form-control" type="text" name="lens_name" placeholder="Enter Lens name" required/></td>
+                      <td><label>청광 차단 가능</label></td>
+                      <td>
+                        <select class="form-control" name="can_block_bluelight">
+                          <option value="1">O</option>
+                          <option value="0">X</option>
+                        </select>
+                      </td>
                     </tr>
 
-                    <!-- 이미지 -->
+                    <!-- 청광 차단 가격 -->
                     <tr>
-                      <td><label class="control-label">렌즈 이미지</label></td>
+                      <td><label class="control-label">청광 차단 가격</label></td>
+                      <td><input class="form-control" type="text" name="block_bluelight_price" placeholder="Enter block bluelight price" required/></td>
+                    </tr>
+
+                    <!-- uv_max -->
+                    <tr>
+                      <td><label>UV MAX 여부</label></td>
                       <td>
-                        <input class="input-group" type="file" name="lens_image" accept="image/*" required/>
-                        <p class="help-block">허용 확장자: jpeg, jpg, gif, png</p>
-                        <p class="help-block">허용 크기: 30mb 이하</p>
+                        <select class="form-control" name="uv_max">
+                          <option value="1">O</option>
+                          <option value="0">X</option>
+                        </select>
                       </td>
                     </tr>
 

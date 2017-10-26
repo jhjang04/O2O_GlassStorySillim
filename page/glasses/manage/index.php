@@ -1,4 +1,5 @@
 <?php
+//완성
   require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
 	$_LEVEL1 = "glasses";
   $_LEVEL2 = "manage";
@@ -34,34 +35,33 @@
                 global $db_info;
 
                 $dbconnector = getConnection($db_info);
-                $products = $dbconnector->executeRawQuery("SELECT cl.id AS idx, co.color_name, cl.power_start, cl.power_end, cl.astigmatism, cl.lens_name, cl.lens_path, cl.availability FROM o2ocolorlens AS cl, o2ocolor AS co WHERE cl.color_code = co.color_code ORDER BY cl.id ASC");
+                $products = $dbconnector->executeRawQuery("SELECT glasses_id, name, brand_name, price, can_photochromic, can_block_bluelight, block_bluelight_price, uv_max FROM o2oglasses as gla, o2obrand as br WHERE gla.brand_code=br.brand_code ORDER BY gla.glasses_id ASC;");
 
                 //make table
                 echo "<table class='table table-striped table-hover table-bordered'>";
-                // index, 색깔, 도수 범위(계산), 난시여부, 렌즈명, 경로
                 echo "<thead>";
                 echo "<th>index</th>";
-                echo "<th>색깔</th>";
-                echo "<th>도수</th>";
-                echo "<th>난시기능</th>";
-                echo "<th>렌즈명</th>";
-                echo "<th>파일경로</th>";
-                echo "<th>미리보기</th>";
-                echo "<th>프로그램 사용여부</th>";
+                echo "<th>이름</th>";
+                echo "<th>브랜드</th>";
+                echo "<th>가격</th>";
+                echo "<th>변색 가능</th>";
+                echo "<th>청광차단 가능</th>";
+                echo "<th>청광차단 가격</th>";
+                echo "<th>UV_MAX 여부</th>";
                 echo "<th>수정/삭제</th>";
                 echo "</thead>";
                 echo "<tbody>";
                 while ($prod = mysqli_fetch_array($products)) {
                   echo "<tr>";
-                  echo "<td>{$prod['idx']}</td>";
-                  echo "<td>{$prod['color_name']}</td>";
-                  echo "<td>".sprintf("%.2f ~ %.2f", $prod['power_start'], $prod['power_end'])."</td>";
-                  echo "<td>".(($prod['astigmatism']==1)?"O":"X")."</td>";
-                  echo "<td>{$prod['lens_name']}</td>";
-                  echo "<td>{$prod['lens_path']}</td>";
-                  echo "<td><img src='../../../color-lens/{$prod['lens_path']}' height='40' width='40'></td>";
-                  echo "<td><input id='toggle{$prod['idx']}' type='checkbox'".(($prod['availability']=='0')?'':'checked')." data-toggle='toggle' data-size='small'></td>";  //toggle
-                  echo "<td><a href='modify.php?id={$prod['idx']}'>수정/삭제</a></td>";
+                  echo "<td>{$prod['glasses_id']}</td>";
+                  echo "<td>{$prod['name']}</td>";
+                  echo "<td>{$prod['brand_name']}</td>";
+                  echo "<td>{$prod['price']}</td>";
+                  echo "<td>".(($prod['can_photochromic']==1)?"O":"X")."</td>";
+                  echo "<td>".(($prod['can_block_bluelight']==1)?"O":"X")."</td>";
+                  echo "<td>".(($prod['can_block_bluelight']==1)?$prod['block_bluelight_price']:"0")."</td>";
+                  echo "<td>".(($prod['uv_max']==1)?"O":"X")."</td>";
+                  echo "<td><a href='modify.php?id={$prod['glasses_id']}'>수정/삭제</a></td>";
                   echo "</tr>";
                 }
                 echo "</tbody>";
@@ -76,30 +76,7 @@
     </section> <!-- /.content -->
 	
 <script type="text/javascript">
-$(function() {
-  $('input')
-    .filter(function() {
-      return this.id.match(/toggle[0-9]+/);
-    })
-    .change(function() {
-      // alert($(this).prop('checked'));
-      $.ajax({
-        url: "update-availability.php",
-        type: 'POST',
-        data: {
-          'id': this.id.slice(6),
-          'checked': $(this).prop('checked')
-        },
-        success: function(data) {
-          // console.log("success");
-          // console.log(data);
-        },
-        error: function() {
-          // console.log("error");
-        }
-      });
-    });
-});
+
 </script>
 
 

@@ -1,18 +1,18 @@
 <?php
-	session_start();
-	$is_logged = $_SESSION['is_logged'];
+  session_start();
+  $is_logged = $_SESSION['is_logged'];
 
-	if($is_logged=='YES'){
-		$_id = $_SESSION['id'];
-		$message = $_id . ' 님, 로그인 했습니다.';
-	}
-	else {
+  if($is_logged=='YES'){
+    $_id = $_SESSION['id'];
+    $message = $_id . ' 님, 로그인 했습니다.';
+  }
+  else {
     echo "<script>";
     echo "alert('로그인이 실패했습니다.');";
     echo "location.href='".BASE_URL."';";
     echo "</script>";
-		//header("Location: ".BASE_URL);
-	}
+    //header("Location: ".BASE_URL);
+  }
   
   require_once(ROOT_PATH."/page/common/common.php");
   require_once(ROOT_PATH."/page/common/menu.php");
@@ -20,7 +20,7 @@
 ?>
 
 <!DOCTYPE html>
-<!--	
+<!--  
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
@@ -173,48 +173,55 @@ desired effect
       <ul class="sidebar-menu">
         <!-- <li class="header">HEADER</li> -->
         <!-- Optionally, you can add icons to the links -->
-		
-		<?php
-		global $_MENU;
-						// 게시판 보여지는 이름
-		foreach($_MENU as $name => $menu){
-			
-			$active = "";
-			// LEVEL1 메뉴가 선택되었을 때
-			if($_LEVEL1 == $name){	
-				$active = "active";
-			}
-			
-			// 서브메뉴가 있을 때
-			if(count($menu['menu'])>0){
-				echo "<li class=\"treeview {$active}\"><a href=\"{$menu['link']}\"><i class =\"fa {$menu['icon']}\"></i>";
-				echo " <span>{$menu['title']}</span><span class=\"pull-right-container\">";
-				echo "<i class=\"fa fa-angle-left pull-right\"></i></span></a><ul class=\"treeview-menu\">";
-				
-				foreach($menu['menu'] as $index => $submenu){
-					$subactive = "";
-					
+    
+    <?php
+    global $_MENU;
+
+    foreach($_MENU as $name => $menu){
+      
+      $active = "";
+      // LEVEL1 메뉴가 선택되었을 때
+      if($_LEVEL1 == $name){  
+        $active = "active";
+      }
+      
+      // 서브메뉴가 있을 때
+      if(count($menu['menu'])>0){
+        echo "<li class=\"treeview {$active}\"><a href=\"{$menu['link']}\"><i class =\"fa {$menu['icon']}\"></i>";
+        echo " <span>{$menu['title']}</span><span class=\"pull-right-container\">";
+        echo "<i class=\"fa fa-angle-left pull-right\"></i></span></a><ul class=\"treeview-menu\">";
+        
+        foreach($menu['menu'] as $index => $submenu){
+          $subactive = "";
+
           // echo "<pre>";
           // var_dump($index);
-          // var_dump($_LEVEL2);
+          // echo "</pre>";
+
+          // echo "<pre>";
           // var_dump($submenu);
           // echo "</pre>";
+
+          // echo "<pre>";
+          // var_dump($_LEVEL2);
+          // echo "</pre>";
+
           if($index == $_LEVEL2){
-						$subactive = "active";
-					}
-					
-					echo "<li class=\"{$subactive}\"><a href=\"{$submenu['link']}\"><i class=\" fa {$submenu['icon']}\"></i>{$submenu['title']}</a></li>";
-				}
-				echo "</ul></li>";
-				
-			}
-			else{ // 서브메뉴가 없는 단일메뉴일 때
-				echo "<li class=\"{$active}\"><a href=\"{$menu['link']}\"><i class=\"fa {$menu['icon']}\"></i>";
-				echo "<span>{$menu['title']}</span></a></li>";
-			}
-			
-		}
-		?>
+            $subactive = "active";
+          }
+          
+          echo "<li class=\"{$subactive}\"><a href=\"{$submenu['link']}\"><i class=\" fa {$submenu['icon']}\"></i>{$submenu['title']}</a></li>";
+        }
+        echo "</ul></li>";
+        
+      }
+      else{ // 서브메뉴가 없는 단일메뉴일 때
+        echo "<li class=\"{$active}\"><a href=\"{$menu['link']}\"><i class=\"fa {$menu['icon']}\"></i>";
+        echo "<span>{$menu['title']}</span></a></li>";
+      }
+      
+    }
+    ?>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -226,11 +233,11 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       
-	  <h1>
-		<?php echo $_TITLE; ?>
+    <h1>
+    <?php echo $_TITLE; ?>
         <small></small>
       </h1>
-	  
+    
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
@@ -255,7 +262,7 @@ desired effect
         echo "<ol>";
       ?>
     </section>
-	
+  
 
     <!-- Main content -->
     <!--<section class="content">-->

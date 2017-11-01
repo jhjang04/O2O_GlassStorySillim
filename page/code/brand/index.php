@@ -7,12 +7,24 @@
   require_once(ROOT_PATH."/page/common/header.php");
 ?>
 
+<style>
+#close-button {
+  text-decoration: none;  /* 언더바 삭제 */
+}
+</style>
+
 <!-- Main content -->
     <section class="content">
 
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
+            <div class="alert alert-warning fade in">
+              <a href="#" id="close-button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;<strong>Warning</strong>
+              <p>브랜드 코드를 삭제할 경우, 해당하는 브랜드의 안경/도수렌즈가 DB에서 삭제되니 유의해주세요.</p>
+            </div>
+
             <div class="box box-primary">
               <div class="box-header with-border">
                 <h3 class="box-title">브랜드 코드 추가</h3>

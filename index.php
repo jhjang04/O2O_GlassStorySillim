@@ -26,7 +26,7 @@ require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
             <input name="script_name" type="hidden" value="doLogin">
             <input type="text" name="id" id="inputID" class="form-control" placeholder="ID" required autofocus>
             <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">로그인</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
           </form><!-- /form -->
         </div><!-- /card-container -->
       </div><!-- /container -->

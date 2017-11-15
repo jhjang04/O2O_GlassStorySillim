@@ -7,7 +7,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 //TODO: 나중에 이거 처리
 ini_set("display_errors", 1);
 
-$ROOT_PATH = $_SERVER['CONTEXT_DOCUMENT_ROOT'];
+$ROOT_PATH = $_SERVER['DOCUMENT_ROOT'];
 define("ROOT_PATH", $ROOT_PATH);
 
 require_once(ROOT_PATH."/config/common.php");

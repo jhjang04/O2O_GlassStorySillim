@@ -1,5 +1,5 @@
 <?php
-  require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
 	$_LEVEL1 = "sales";
   $_LEVEL2 = "inquiry";
 	$_TITLE = "매출 조회";

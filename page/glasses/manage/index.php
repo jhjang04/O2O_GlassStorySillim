@@ -1,6 +1,6 @@
 <?php
 //완성
-  require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
 	$_LEVEL1 = "glasses";
   $_LEVEL2 = "manage";
 	$_TITLE = "안경/도수렌즈";

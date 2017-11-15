@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
 ?>
 
 <!DOCTYPE html>

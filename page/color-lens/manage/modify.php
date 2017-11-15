@@ -1,5 +1,5 @@
 <?php
-  require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
   if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     global $db_info;
@@ -22,7 +22,7 @@
     header("Location: index.php");
   }
 
-  require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
     $_LEVEL1 = "color-lens";
     $_LEVEL2 = "manage";
     $_LEVEL3 = "modify";

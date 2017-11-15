@@ -1,5 +1,5 @@
 <?php
-  require_once($_SERVER['CONTEXT_DOCUMENT_ROOT']."/core/include/include.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/core/include/include.php");
   $_LEVEL1 = "code";
   $_LEVEL2 = "color";
   $_TITLE = "색상";
